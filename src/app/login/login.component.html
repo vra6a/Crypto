@@ -2,25 +2,21 @@
   <mat-card-content>
     <h2>Log in with your username and password!</h2>
     <p>
-      <mat-form-field appearance="fill">
+      <mat-form-field>
         <mat-label>Username</mat-label>
-        <input #username matInput type="text" />
+        <input [(ngModel)]="username" matInput type="text" />
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field appearance="fill">
+      <mat-form-field>
         <mat-label>Password</mat-label>
-        <input #password matInput type="password" />
+        <input [(ngModel)]="password" matInput type="password" />
       </mat-form-field>
     </p>
   </mat-card-content>
   <mat-card-actions>
     <p>
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="onLogin(username.value, password.value)"
-      >
+      <button mat-raised-button color="primary" (click)="onLogin()">
         Log in
       </button>
     </p>

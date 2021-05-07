@@ -17,8 +17,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onLogin(username: string, password: string) {
-    if (this.auth.logIn(username, password)) {
+  username: string = '';
+  password: string = '';
+
+  onLogin() {
+    if (this.auth.logIn(this.username, this.password)) {
       this._snackBar.open('Log in was succesful!', 'Ok', { duration: 2000 });
       this.router.navigate(['main']);
     } else {

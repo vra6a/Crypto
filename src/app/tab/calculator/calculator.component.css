@@ -1,0 +1,13 @@
+.center {
+  text-align: center;
+}
+
+p {
+  margin-left: 1vw;
+}
+
+.output {
+  font-size: medium;
+  margin-left: 1vw;
+  font-weight: 400;
+}

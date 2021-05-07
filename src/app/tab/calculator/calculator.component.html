@@ -1,0 +1,25 @@
+<h3>{{ usdPrice }}$ = 1 {{ id }}</h3>
+
+<mat-grid-list cols="2" rowHeight="8:1">
+  <mat-grid-tile>
+    <h2 class="center">{{ from }}</h2>
+    <p>
+      <mat-form-field>
+        <input
+          [(ngModel)]="input"
+          matInput
+          type="number"
+          (ngModelChange)="onChange()"
+        />
+      </mat-form-field>
+    </p>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <h2 class="center">
+      {{ to }} <span class="output">{{ output }}</span>
+    </h2>
+  </mat-grid-tile>
+</mat-grid-list>
+<p class="center">
+  <button mat-raised-button color="primary" (click)="onSwap()">Swap</button>
+</p>

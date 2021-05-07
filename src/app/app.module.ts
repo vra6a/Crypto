@@ -13,6 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { FormsModule } from '@angular/forms';
 
 import { LoginComponent } from './login/login.component';
 import { MainPageComponent } from './main-page/main-page.component';
@@ -20,6 +22,7 @@ import { TabComponent } from './tab/tab.component';
 import { DialogboxComponent } from './main-page/dialogbox/dialogbox.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { CalculatorComponent } from './tab/calculator/calculator.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +31,10 @@ import { MatSelectModule } from '@angular/material/select';
     MainPageComponent,
     TabComponent,
     DialogboxComponent,
+    CalculatorComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -43,6 +48,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatTabsModule,
     MatDialogModule,
     MatSelectModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

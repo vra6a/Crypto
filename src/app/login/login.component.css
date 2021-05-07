@@ -1,0 +1,9 @@
+.login-card {
+  max-width: 600px;
+  margin: 10vh auto;
+}
+
+p,
+h2 {
+  text-align: center;
+}

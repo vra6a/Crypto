@@ -1,0 +1,28 @@
+<mat-card class="login-card">
+  <mat-card-content>
+    <h2>Log in with your username and password!</h2>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input #username matInput type="text" />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input #password matInput type="password" />
+      </mat-form-field>
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <p>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onLogin(username.value, password.value)"
+      >
+        Log in
+      </button>
+    </p>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Add new Crypto Currency</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Select</mat-label>
+    <mat-select #selection>
+      <mat-option *ngFor="let asset of data.cryptos" [value]="asset.asset_id">{{
+        asset.asset_id
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="selection.value" cdkFocusInitial>
+    Ok
+  </button>
+</div>

@@ -12,12 +12,23 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { LoginComponent } from './login/login.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { TabComponent } from './tab/tab.component';
+import { DialogboxComponent } from './main-page/dialogbox/dialogbox.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, MainPageComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    MainPageComponent,
+    TabComponent,
+    DialogboxComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,9 +37,12 @@ import { MainPageComponent } from './main-page/main-page.component';
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatOptionModule,
     MatInputModule,
     MatSnackBarModule,
     MatTabsModule,
+    MatDialogModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

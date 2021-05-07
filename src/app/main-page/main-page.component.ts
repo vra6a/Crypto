@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Asset } from '../models/asset.model';
-import { Data } from '../models/data.model';
 import { DataService } from '../services/data.service';
 import { DialogboxComponent } from './dialogbox/dialogbox.component';
 
@@ -24,21 +23,19 @@ export class MainPageComponent implements OnInit {
   tabs: Asset[] = [];
   availableCryptos: Asset[] = [];
 
-  tabClick(event: MatTabChangeEvent) {
-    if (event.index == this.tabs.length) {
-      const dialogRef = this.dialog.open(DialogboxComponent, {
-        width: '650px',
-        data: { cryptos: this.availableCryptos },
-      });
+  onAdd() {
+    const dialogRef = this.dialog.open(DialogboxComponent, {
+      width: '650px',
+      data: { cryptos: this.availableCryptos },
+    });
 
-      dialogRef.afterClosed().subscribe((result) => {
-        let tmpAsset: Asset | undefined = this.availableCryptos.find(
-          (c) => c.asset_id == result
-        );
-        if (tmpAsset) {
-          this.tabs.push(tmpAsset);
-        }
-      });
-    }
+    dialogRef.afterClosed().subscribe((result) => {
+      let tmpAsset: Asset | undefined = this.availableCryptos.find(
+        (c) => c.asset_id == result
+      );
+      if (tmpAsset) {
+        this.tabs.push(tmpAsset);
+      }
+    });
   }
 }

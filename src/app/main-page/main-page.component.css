@@ -6,3 +6,8 @@
 .container {
   margin-top: 5vh;
 }
+
+span {
+  font-size: large;
+  padding: 15px 60px;
+}

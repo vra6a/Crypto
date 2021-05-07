@@ -1,10 +1,14 @@
 <div class="frame">
   <mat-card class="container">
-    <mat-tab-group (selectedTabChange)="tabClick($event)">
+    <mat-tab-group>
       <mat-tab [label]="Tab.asset_id" *ngFor="let Tab of tabs">
         <app-tab [tab]="Tab"></app-tab>
       </mat-tab>
-      <mat-tab label="+"></mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span (click)="onAdd()">+</span>
+        </ng-template>
+      </mat-tab>
     </mat-tab-group>
   </mat-card>
 </div>

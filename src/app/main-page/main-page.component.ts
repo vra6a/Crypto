@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Asset } from '../models/asset.model';
 import { DataService } from '../services/data.service';
 import { DialogboxComponent } from './dialogbox/dialogbox.component';

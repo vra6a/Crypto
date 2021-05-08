@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Period } from '../models/period.model';
 import { ApiService } from './api.service';
 import { AssetsinfoService } from './assetsinfo.service';
 

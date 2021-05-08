@@ -1,17 +1,31 @@
-<div class="frame">
-  <mat-card class="container">
-    <mat-tab-group>
-      <mat-tab [label]="Tab.asset_id" *ngFor="let Tab of tabs">
-        <app-tab
-          [tab]="Tab"
-          (onDeletePressed)="deletePressed($event)"
-        ></app-tab>
-      </mat-tab>
-      <mat-tab>
-        <ng-template mat-tab-label>
-          <span (click)="onAdd()">+</span>
-        </ng-template>
-      </mat-tab>
-    </mat-tab-group>
-  </mat-card>
-</div>
+<mat-drawer-container class="drawer-container" autosize>
+  <mat-drawer #drawer class="drawe-sidenav" mode="side">
+    <app-sidenav-element
+      *ngFor="let Tab of tabs"
+      [tab]="Tab"
+    ></app-sidenav-element>
+  </mat-drawer>
+
+  <div class="drawer-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="frame">
+      <mat-card class="container">
+        <mat-tab-group>
+          <mat-tab [label]="Tab.asset_id" *ngFor="let Tab of tabs">
+            <app-tab
+              [tab]="Tab"
+              (onDeletePressed)="deletePressed($event)"
+            ></app-tab>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span (click)="onAdd()">+</span>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card>
+    </div>
+  </div>
+</mat-drawer-container>

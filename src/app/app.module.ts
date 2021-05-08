@@ -16,6 +16,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { FormsModule } from '@angular/forms';
 
 import { LoginComponent } from './login/login.component';
@@ -28,6 +29,7 @@ import { CalculatorComponent } from './tab/calculator/calculator.component';
 import { ChartComponent } from './tab/chart/chart.component';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { SidenavElementComponent } from './main-page/sidenav-element/sidenav-element.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     DialogboxComponent,
     CalculatorComponent,
     ChartComponent,
+    SidenavElementComponent,
   ],
   imports: [
     FormsModule,
@@ -50,6 +53,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatSidenavModule,
     MatOptionModule,
     MatInputModule,
     MatSnackBarModule,

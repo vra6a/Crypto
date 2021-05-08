@@ -11,3 +11,16 @@ span {
   font-size: large;
   padding: 15px 60px;
 }
+
+.drawer-container {
+  height: 100%;
+}
+
+.drawer-sidenav-content {
+  height: 100%;
+  width: 100%;
+}
+
+.drawer-sidenav {
+  padding: 20px;
+}

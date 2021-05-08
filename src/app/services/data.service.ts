@@ -17,8 +17,8 @@ export class DataService {
   }
 
   getLastWeek(id: string, start: string, end: string) {
-    //return this.assetInfo.getTimeData(id); //MOCK
-    return this.api.getPeriod(id, '', start, end); //REAL
+    return this.assetInfo.getTimeData(id); //MOCK
+    //return this.api.getPeriod(id, '', start, end); //REAL
   }
 
   private initializeCryptoData() {

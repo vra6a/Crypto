@@ -12,18 +12,30 @@ export class ChartComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {}
 
   ngOnInit(): void {
+    this.init();
+  }
+  dataLoaded = false;
+  data: any = '';
+  @Input() id: string = '';
+
+  init() {
     ///MOCK
-    /*
+
     this.data = this.dataService
-      .getLastWeek(this.id, this.getStartDate(new Date()).toISOString(), new Date().toISOString())
+      .getLastWeek(
+        this.id,
+        this.getStartDate(new Date()).toISOString(),
+        new Date().toISOString()
+      )
       .map((x) => {
         let date = x.time_period_start.split('T');
         return { name: date[0], value: x.price_close };
       });
+    this.dataLoaded = true;
     console.log(new Date().toISOString());
-      */
-    //REAL
 
+    //REAL
+    /*
     this.dataService
       .getLastWeek(
         this.id,
@@ -36,11 +48,10 @@ export class ChartComponent implements OnInit, OnDestroy {
           let date = x.time_period_start.split('T');
           return { name: date[0], value: x.price_close };
         });
+        this.dataLoaded = true;
       });
+      */
   }
-  dataLoaded = true;
-  data: any = '';
-  @Input() id: string = '';
 
   getStartDate(endDate: Date): Date {
     return new Date(Date.now() - 7 * 1000 * 60 * 60 * 24);

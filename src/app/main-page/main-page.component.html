@@ -2,7 +2,10 @@
   <mat-card class="container">
     <mat-tab-group>
       <mat-tab [label]="Tab.asset_id" *ngFor="let Tab of tabs">
-        <app-tab [tab]="Tab"></app-tab>
+        <app-tab
+          [tab]="Tab"
+          (onDeletePressed)="deletePressed($event)"
+        ></app-tab>
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label>

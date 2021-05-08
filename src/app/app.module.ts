@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 
 import { LoginComponent } from './login/login.component';
@@ -23,6 +25,9 @@ import { DialogboxComponent } from './main-page/dialogbox/dialogbox.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { CalculatorComponent } from './tab/calculator/calculator.component';
+import { ChartComponent } from './tab/chart/chart.component';
+
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -32,10 +37,13 @@ import { CalculatorComponent } from './tab/calculator/calculator.component';
     TabComponent,
     DialogboxComponent,
     CalculatorComponent,
+    ChartComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSliderModule,
@@ -46,9 +54,11 @@ import { CalculatorComponent } from './tab/calculator/calculator.component';
     MatInputModule,
     MatSnackBarModule,
     MatTabsModule,
+    MatIconModule,
     MatDialogModule,
     MatSelectModule,
     MatGridListModule,
+    NgxChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

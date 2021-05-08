@@ -6,6 +6,191 @@ import { Injectable } from '@angular/core';
 export class AssetsinfoService {
   constructor() {}
 
+  DOGEData = [
+    {
+      time_period_start: '2021-01-02T00:00:00.0000000Z',
+      time_period_end: '2021-01-03T00:00:00.0000000Z',
+      time_open: '2021-01-02T00:01:23.1690000Z',
+      time_close: '2021-01-02T23:59:51.1100000Z',
+      price_open: 0.005776,
+      price_high: 0.0142824,
+      price_low: 0.0055785,
+      price_close: 0.0105776,
+      volume_traded: 2187930913.99735417,
+      trades_count: 28416,
+    },
+    {
+      time_period_start: '2021-01-03T00:00:00.0000000Z',
+      time_period_end: '2021-01-04T00:00:00.0000000Z',
+      time_open: '2021-01-03T00:00:25.0410000Z',
+      time_close: '2021-01-03T23:59:50.1340000Z',
+      price_open: 0.0105037,
+      price_high: 0.0138888,
+      price_low: 0.0091325,
+      price_close: 0.0098462,
+      volume_traded: 1205597694.70672308,
+      trades_count: 19776,
+    },
+    {
+      time_period_start: '2021-01-04T00:00:00.0000000Z',
+      time_period_end: '2021-01-05T00:00:00.0000000Z',
+      time_open: '2021-01-04T00:00:14.1100000Z',
+      time_close: '2021-01-04T23:57:34.9700000Z',
+      price_open: 0.0098499,
+      price_high: 0.0114897,
+      price_low: 0.007209,
+      price_close: 0.0097924,
+      volume_traded: 1081828402.82855745,
+      trades_count: 13341,
+    },
+    {
+      time_period_start: '2021-01-05T00:00:00.0000000Z',
+      time_period_end: '2021-01-06T00:00:00.0000000Z',
+      time_open: '2021-01-05T00:00:35.8620000Z',
+      time_close: '2021-01-05T23:58:51.6030000Z',
+      price_open: 0.0098091,
+      price_high: 0.0103023,
+      price_low: 0.0087972,
+      price_close: 0.01,
+      volume_traded: 227257645.45507865,
+      trades_count: 4575,
+    },
+    {
+      time_period_start: '2021-01-06T00:00:00.0000000Z',
+      time_period_end: '2021-01-07T00:00:00.0000000Z',
+      time_open: '2021-01-06T00:00:13.9910000Z',
+      time_close: '2021-01-06T23:59:58.4360000Z',
+      price_open: 0.010007,
+      price_high: 0.011061,
+      price_low: 0.0095914,
+      price_close: 0.010458,
+      volume_traded: 391518520.43549849,
+      trades_count: 6931,
+    },
+    {
+      time_period_start: '2021-01-07T00:00:00.0000000Z',
+      time_period_end: '2021-01-08T00:00:00.0000000Z',
+      time_open: '2021-01-07T00:00:05.7050000Z',
+      time_close: '2021-01-07T23:59:43.0290000Z',
+      price_open: 0.010462,
+      price_high: 0.0106,
+      price_low: 0.009314,
+      price_close: 0.0097676,
+      volume_traded: 446044946.54869926,
+      trades_count: 4387,
+    },
+    {
+      time_period_start: '2021-01-08T00:00:00.0000000Z',
+      time_period_end: '2021-01-09T00:00:00.0000000Z',
+      time_open: '2021-01-08T00:00:25.3530000Z',
+      time_close: '2021-01-08T23:59:45.2870000Z',
+      price_open: 0.0098137,
+      price_high: 0.0102878,
+      price_low: 0.008776,
+      price_close: 0.009794,
+      volume_traded: 253898627.51237414,
+      trades_count: 3721,
+    },
+  ];
+
+  BTCData = [
+    {
+      time_period_start: '2021-01-02T00:00:00.0000000Z',
+      time_period_end: '2021-01-03T00:00:00.0000000Z',
+      time_open: '2021-01-02T00:00:00.2184930Z',
+      time_close: '2021-01-02T23:59:59.4810790Z',
+      price_open: 29413.29,
+      price_high: 33333.0,
+      price_low: 29028.7,
+      price_close: 32225.91,
+      volume_traded: 87675.545105983,
+      trades_count: 608895,
+    },
+    {
+      time_period_start: '2021-01-03T00:00:00.0000000Z',
+      time_period_end: '2021-01-04T00:00:00.0000000Z',
+      time_open: '2021-01-03T00:00:00.2242730Z',
+      time_close: '2021-01-03T23:59:59.9955750Z',
+      price_open: 32222.88,
+      price_high: 34810.0,
+      price_low: 31977.45,
+      price_close: 33080.66,
+      volume_traded: 65512.55318228,
+      trades_count: 566970,
+    },
+    {
+      time_period_start: '2021-01-04T00:00:00.0000000Z',
+      time_period_end: '2021-01-05T00:00:00.0000000Z',
+      time_open: '2021-01-04T00:00:00.1930980Z',
+      time_close: '2021-01-04T23:59:59.9520000Z',
+      price_open: 33082.84,
+      price_high: 33669.76,
+      price_low: 27632.34,
+      price_close: 32005.88,
+      volume_traded: 88959.94175729,
+      trades_count: 672990,
+    },
+    {
+      time_period_start: '2021-01-05T00:00:00.0000000Z',
+      time_period_end: '2021-01-06T00:00:00.0000000Z',
+      time_open: '2021-01-05T00:00:00.0066330Z',
+      time_close: '2021-01-05T23:59:59.8310000Z',
+      price_open: 32020.22,
+      price_high: 34536.29,
+      price_low: 29891.13,
+      price_close: 34039.05,
+      volume_traded: 71097.24847368,
+      trades_count: 568172,
+    },
+    {
+      time_period_start: '2021-01-06T00:00:00.0000000Z',
+      time_period_end: '2021-01-07T00:00:00.0000000Z',
+      time_open: '2021-01-06T00:00:00.2258270Z',
+      time_close: '2021-01-06T23:59:59.7552400Z',
+      price_open: 34043.91,
+      price_high: 37050.83,
+      price_low: 33348.27,
+      price_close: 36859.26,
+      volume_traded: 81851.072867409,
+      trades_count: 653850,
+    },
+    {
+      time_period_start: '2021-01-07T00:00:00.0000000Z',
+      time_period_end: '2021-01-08T00:00:00.0000000Z',
+      time_open: '2021-01-07T00:00:00.1559680Z',
+      time_close: '2021-01-07T23:59:59.5295690Z',
+      price_open: 36859.26,
+      price_high: 40425.0,
+      price_low: 36129.05,
+      price_close: 39505.56,
+      volume_traded: 94872.213230374,
+      trades_count: 775509,
+    },
+    {
+      time_period_start: '2021-01-08T00:00:00.0000000Z',
+      time_period_end: '2021-01-09T00:00:00.0000000Z',
+      time_open: '2021-01-08T00:00:00.0520000Z',
+      time_close: '2021-01-08T23:59:59.7690000Z',
+      price_open: 39510.59,
+      price_high: 42000.0,
+      price_low: 36565.08,
+      price_close: 40667.07,
+      volume_traded: 90051.434597366,
+      trades_count: 790798,
+    },
+  ];
+
+  getTimeData(id: string, currency: string = 'USD') {
+    switch (id) {
+      case 'BTC':
+        return this.BTCData;
+      case 'DOGE':
+        return this.DOGEData;
+      default:
+        return this.BTCData;
+    }
+  }
+
   getAssets() {
     let assets = [
       {

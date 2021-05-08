@@ -16,8 +16,6 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
     let cryptos = this.data.getAvailableCryptos();
     this.availableCryptos = cryptos;
-    let tmp: Asset = new Asset(cryptos[0].asset_id, cryptos[0].price_usd);
-    this.tabs.push(tmp);
   }
 
   tabs: Asset[] = [];
@@ -36,6 +34,12 @@ export class MainPageComponent implements OnInit {
       if (tmpAsset) {
         this.tabs.push(tmpAsset);
       }
+    });
+  }
+
+  deletePressed(toDelete: Asset) {
+    this.tabs = this.tabs.filter((tab) => {
+      return tab.asset_id != toDelete.asset_id;
     });
   }
 }

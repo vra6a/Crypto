@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Asset } from '../models/asset.model';
 
 @Component({
@@ -10,6 +10,11 @@ export class TabComponent implements OnInit {
   constructor() {}
 
   @Input() tab!: Asset;
+  @Output() onDeletePressed = new EventEmitter<Asset>();
 
   ngOnInit(): void {}
+
+  onDelete() {
+    this.onDeletePressed.emit(this.tab);
+  }
 }

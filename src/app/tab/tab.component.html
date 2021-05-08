@@ -1,2 +1,8 @@
-<h1>{{ tab.asset_id }}</h1>
+<h1 class="center">
+  {{ tab.asset_id
+  }}<span class="delete" (click)="onDelete()">
+    <mat-icon style="cursor: pointer">delete</mat-icon>
+  </span>
+</h1>
 <app-calculator [usdPrice]="tab.price_usd" [id]="tab.asset_id"></app-calculator>
+<app-chart [id]="tab.asset_id"></app-chart>

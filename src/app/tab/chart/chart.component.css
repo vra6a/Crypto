@@ -1,0 +1,10 @@
+.center {
+  text-align: center;
+  margin-top: 2vh;
+}
+
+.chart-bar-vertical {
+  max-height: 400px;
+  max-width: 1000px;
+  margin: 2vh auto;
+}

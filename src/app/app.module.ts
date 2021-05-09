@@ -30,6 +30,7 @@ import { ChartComponent } from './tab/chart/chart.component';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { SidenavElementComponent } from './main-page/sidenav-element/sidenav-element.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { SidenavElementComponent } from './main-page/sidenav-element/sidenav-ele
     CalculatorComponent,
     ChartComponent,
     SidenavElementComponent,
+    FooterComponent,
   ],
   imports: [
     FormsModule,

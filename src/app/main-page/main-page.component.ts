@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Asset } from '../models/asset.model';
+import { User } from '../models/user.model';
 import { DataService } from '../services/data.service';
 import { WebSocketService } from '../services/web-socket.service';
 import { DialogboxComponent } from './dialogbox/dialogbox.component';
@@ -12,6 +14,7 @@ import { DialogboxComponent } from './dialogbox/dialogbox.component';
   styleUrls: ['./main-page.component.css'],
 })
 export class MainPageComponent implements OnInit {
+  currentUser!: User;
   tabs: Asset[] = [];
   availableCryptos: Asset[] = [];
 
@@ -21,12 +24,17 @@ export class MainPageComponent implements OnInit {
   constructor(
     private data: DataService,
     public dialog: MatDialog,
-    private wss: WebSocketService
+    private wss: WebSocketService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     let cryptos = this.data.getAvailableCryptos();
     this.availableCryptos = cryptos;
+    this.currentUser = this.getCurrentUser();
+    if (this.currentUser) {
+      this.tabs = this.currentUser.activeTabs;
+    }
   }
 
   onAdd() {
@@ -42,6 +50,7 @@ export class MainPageComponent implements OnInit {
       if (tmpAsset) {
         this.tabs.push(tmpAsset);
         this.socketChange();
+        this.saveState();
         console.log('onAdd', this.tabs);
       }
     });
@@ -52,6 +61,7 @@ export class MainPageComponent implements OnInit {
       return tab.asset_id != toDelete.asset_id;
     });
     this.socketChange();
+    this.saveState();
   }
 
   socketChange() {
@@ -79,5 +89,31 @@ export class MainPageComponent implements OnInit {
         this.wsIsOpen = false;
       }
     }
+  }
+
+  onLogOut() {
+    let tmpUser: User = this.getCurrentUser();
+    let users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
+    users.forEach((user: User) => {
+      if (user.username == tmpUser.username) {
+        user.activeTabs = tmpUser.activeTabs;
+      }
+    });
+
+    localStorage.setItem('loggedInUser', '');
+    localStorage.setItem('users', JSON.stringify(users));
+
+    this.router.navigate(['/login']);
+  }
+
+  saveState() {
+    if (this.currentUser) {
+      this.currentUser.activeTabs = this.tabs;
+      localStorage.setItem('loggedInUser', JSON.stringify(this.currentUser));
+    }
+  }
+
+  getCurrentUser(): User {
+    return JSON.parse(localStorage.getItem('loggedInUser') || '');
   }
 }

@@ -11,6 +11,9 @@
   </mat-drawer>
 
   <div class="drawer-sidenav-content">
+    <button type="button" mat-button (click)="onLogOut()" class="right">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
     <button
       type="button"
       mat-button
@@ -19,6 +22,7 @@
     >
       <mat-icon>menu</mat-icon>
     </button>
+
     <div class="frame">
       <mat-card class="container">
         <mat-tab-group>

@@ -16,6 +16,7 @@ export class AuthService {
     users.forEach((user) => {
       if (user.username == username) {
         if (user.password == password) {
+          this.setLoggedInUser(user);
           success = true;
           hasAccount = true;
         } else {
@@ -25,10 +26,16 @@ export class AuthService {
       }
     });
     if (!hasAccount) {
-      users.push({ username: username, password: password });
+      let tmpUser = new User(username, password, []);
+      users.push(tmpUser);
       localStorage.setItem('users', JSON.stringify(users));
+      this.setLoggedInUser(tmpUser);
       success = true;
     }
     return success;
+  }
+
+  private setLoggedInUser(user: User) {
+    localStorage.setItem('loggedInUser', JSON.stringify(user));
   }
 }

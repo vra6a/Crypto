@@ -50,7 +50,6 @@ export class WebSocketService {
   }
 
   closeWebSocket() {
-    console.log('asd');
     this.WebSocket.close();
   }
 

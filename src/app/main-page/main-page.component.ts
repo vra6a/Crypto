@@ -42,9 +42,9 @@ export class MainPageComponent implements OnInit {
       if (tmpAsset) {
         this.tabs.push(tmpAsset);
         this.socketChange();
+        console.log('onAdd', this.tabs);
       }
     });
-    console.log('onAdd', this.tabs);
   }
 
   deletePressed(toDelete: Asset) {

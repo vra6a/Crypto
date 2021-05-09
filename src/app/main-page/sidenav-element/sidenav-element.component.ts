@@ -29,11 +29,13 @@ export class SidenavElementComponent implements OnInit, OnDestroy {
 
   handleData(data: Object) {
     let wsInfo = data as WebsocketInfo;
-    let symbolArray = wsInfo.symbol_id.split('_');
-    console.log(symbolArray[2], wsInfo.price_high, wsInfo.price_low);
-    if (symbolArray[2] == this.tab.asset_id) {
-      this.high = wsInfo.price_high;
-      this.low = wsInfo.price_low;
+    if (wsInfo.type != 'error') {
+      let symbolArray = wsInfo.symbol_id.split('_');
+      console.log(symbolArray[2], wsInfo.price_high, wsInfo.price_low);
+      if (symbolArray[2] == this.tab.asset_id) {
+        this.high = wsInfo.price_high;
+        this.low = wsInfo.price_low;
+      }
     }
   }
 }

@@ -17,3 +17,20 @@ export interface Data {
   price_usd: number;
   id_icon: string;
 }
+
+export interface WebsocketInfo {
+  period_id: string;
+  price_close: number;
+  price_high: number;
+  price_low: number;
+  price_open: number;
+  sequence: number;
+  symbol_id: string;
+  time_close: string;
+  time_open: string;
+  time_period_end: string;
+  time_period_start: string;
+  trades_count: number;
+  type: string;
+  volume_traded: number;
+}

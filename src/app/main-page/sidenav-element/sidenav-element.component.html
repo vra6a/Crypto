@@ -1,9 +1,9 @@
 <div class="container">
-  <h2>{{ tab.asset_id }}</h2>
-  <mat-icon>arrow_upward</mat-icon>
-  <span>0.5</span>
-  <mat-icon>arrow_downward</mat-icon>
-  <span>0.5</span>
-  <button (click)="openWebSocket()">websocket</button>
-  <button (click)="send()">send</button>
+  <h2>
+    {{ tab.asset_id }}
+    <mat-icon class="spacer">arrow_upward</mat-icon>
+    <span class="green">{{ high }}</span>
+    <mat-icon class="spacer">arrow_downward</mat-icon>
+    <span class="red">{{ low }}</span>
+  </h2>
 </div>

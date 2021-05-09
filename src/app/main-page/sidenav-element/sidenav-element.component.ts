@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Asset } from 'src/app/models/asset.model';
+import { WebsocketInfo } from 'src/app/models/data.model';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 
 @Component({
@@ -7,18 +9,31 @@ import { WebSocketService } from 'src/app/services/web-socket.service';
   templateUrl: './sidenav-element.component.html',
   styleUrls: ['./sidenav-element.component.css'],
 })
-export class SidenavElementComponent implements OnInit {
+export class SidenavElementComponent implements OnInit, OnDestroy {
+  dataSubscription: Subscription = new Subscription();
+  @Input() tab!: Asset;
+  high: number = 0;
+  low: number = 0;
+
   constructor(private wss: WebSocketService) {}
 
-  ngOnInit(): void {}
-
-  @Input() tab!: Asset;
-
-  openWebSocket() {
-    this.wss.OpenWebSocket();
+  ngOnInit(): void {
+    this.dataSubscription = this.wss.dataUpdated.subscribe((data: string) => {
+      this.handleData(JSON.parse(data));
+    });
   }
 
-  send() {
-    this.wss.send();
+  ngOnDestroy(): void {
+    this.dataSubscription.unsubscribe();
+  }
+
+  handleData(data: Object) {
+    let wsInfo = data as WebsocketInfo;
+    let symbolArray = wsInfo.symbol_id.split('_');
+    console.log(symbolArray[2], wsInfo.price_high, wsInfo.price_low);
+    if (symbolArray[2] == this.tab.asset_id) {
+      this.high = wsInfo.price_high;
+      this.low = wsInfo.price_low;
+    }
   }
 }

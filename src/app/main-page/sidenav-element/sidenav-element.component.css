@@ -2,3 +2,15 @@
   width: 300px;
   padding: 10px;
 }
+
+.spacer {
+  margin-left: 10px;
+}
+
+.green {
+  color: #28b873;
+}
+
+.red {
+  color: #e7404a;
+}

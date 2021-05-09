@@ -1,5 +1,4 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Period } from 'src/app/models/period.model';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({

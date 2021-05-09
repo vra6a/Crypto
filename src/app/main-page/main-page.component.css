@@ -36,3 +36,9 @@ h2 {
 .right {
   float: right;
 }
+
+.username {
+  font-size: medium;
+  margin-top: 1vh;
+  font-weight: 500;
+}

@@ -2,7 +2,14 @@
   background-color: #fafafa;
   height: 5%;
   text-align: center;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
 }
 .git {
   max-width: 30px;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }

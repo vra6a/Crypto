@@ -15,8 +15,13 @@ export class ChartComponent implements OnInit, OnDestroy {
     this.init();
   }
   dataLoaded = false;
-  data: any = '';
+  data: { name: string; value: number }[] = [];
+
   @Input() id: string = '';
+
+  colorScheme = {
+    domain: ['#3F51B5'],
+  };
 
   init() {
     ///MOCK

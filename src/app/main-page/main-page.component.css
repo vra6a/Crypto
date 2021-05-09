@@ -28,3 +28,7 @@ span {
 h2 {
   padding: 10px;
 }
+
+.center {
+  text-align: center;
+}

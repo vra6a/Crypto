@@ -32,7 +32,6 @@ export class ChartComponent implements OnInit, OnDestroy {
         return { name: date[0], value: x.price_close };
       });
     this.dataLoaded = true;
-    console.log(new Date().toISOString());
 
     //REAL
     /*

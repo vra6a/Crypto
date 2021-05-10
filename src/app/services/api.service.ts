@@ -27,4 +27,10 @@ export class ApiService {
       end;
     return this.http.get(url, { headers: this.headers });
   }
+
+  getAssets() {
+    return this.http.get('https://rest.coinapi.io/v1/assets', {
+      headers: this.headers,
+    });
+  }
 }

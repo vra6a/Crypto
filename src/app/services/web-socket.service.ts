@@ -9,32 +9,16 @@ export class WebSocketService {
 
   WebSocket!: WebSocket;
   dataUpdated = new Subject<string>();
+  wsIsOpen = false;
 
-  OpenWebSocket(assets: string[]) /*:Subject<MessageEvent> */ {
+  OpenWebSocket(assets: string[]) {
     let hello = this.constructHello(assets);
 
     //creating the socket
     this.WebSocket = new WebSocket('ws://ws.coinapi.io/v1/');
 
-    /*
-    let observable = Observable.create((obs: Observer<MessageEvent>) => {
-      this.WebSocket.send(JSON.stringify(hello));
-      this.WebSocket.onmessage = obs.next.bind(obs);
-      this.WebSocket.onclose = obs.complete.bind(obs)
-      return this.WebSocket.close.bind(this.WebSocket);
-    });
-
-    let observer = {
-      next: (data: Object) => {
-        if(this.WebSocket.readyState === this.WebSocket.OPEN) {
-          this.WebSocket.send(JSON.stringify(data));
-        }
-      }
-    }
-    */
-
     this.WebSocket.onopen = (event) => {
-      console.log('Open: ', event);
+      this.wsIsOpen = true;
       this.WebSocket.send(JSON.stringify(hello));
     };
 
@@ -42,11 +26,14 @@ export class WebSocketService {
       this.dataUpdated.next(event.data);
     };
 
-    this.WebSocket.onclose = (event) => {
-      console.log('Close: ', event);
+    this.WebSocket.onerror = (event) => {
+      //TODO
     };
 
-    //return Subject.create(observer, observable);
+    this.WebSocket.onclose = (event) => {
+      //TODO
+      this.wsIsOpen = false;
+    };
   }
 
   closeWebSocket() {

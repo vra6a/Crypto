@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Period } from 'src/app/models/period.model';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class ChartComponent implements OnInit, OnDestroy {
 
   init() {
     ///MOCK
-
+    /*
     this.data = this.dataService
       .getLastWeek(
         this.id,
@@ -36,9 +37,9 @@ export class ChartComponent implements OnInit, OnDestroy {
         return { name: date[0], value: x.price_close };
       });
     this.dataLoaded = true;
-
+      */
     //REAL
-    /*
+
     this.dataService
       .getLastWeek(
         this.id,
@@ -53,7 +54,6 @@ export class ChartComponent implements OnInit, OnDestroy {
         });
         this.dataLoaded = true;
       });
-      */
   }
 
   getStartDate(endDate: Date): Date {

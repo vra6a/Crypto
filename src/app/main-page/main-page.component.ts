@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Data, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Asset } from '../models/asset.model';
 import { User } from '../models/user.model';
+import { AuthService } from '../services/auth.service';
 import { DataService } from '../services/data.service';
 import { WebSocketService } from '../services/web-socket.service';
 import { DialogboxComponent } from './dialogbox/dialogbox.component';
@@ -12,28 +14,40 @@ import { DialogboxComponent } from './dialogbox/dialogbox.component';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css'],
 })
-export class MainPageComponent implements OnInit {
+export class MainPageComponent implements OnInit, OnDestroy {
   currentUser!: User;
   tabs: Asset[] = [];
   availableCryptos: Asset[] = [];
 
   drawerIsOpen: boolean = false;
-  wsIsOpen: boolean = false;
+  dataSubscription = new Subscription();
 
   constructor(
     private data: DataService,
     public dialog: MatDialog,
     private wss: WebSocketService,
-    private router: Router
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {
-    let cryptos = this.data.getAvailableCryptos();
-    this.availableCryptos = cryptos;
-    this.currentUser = this.getCurrentUser();
+    if (this.data.loadFinished) {
+      this.availableCryptos = this.data.getAvailableCryptos();
+    } else {
+      this.dataSubscription = this.data.dataLoaded.subscribe(
+        (data: Asset[]) => {
+          this.availableCryptos = data;
+        }
+      );
+    }
+
+    this.currentUser = this.auth.getCurrentUser();
     if (this.currentUser) {
       this.tabs = this.currentUser.activeTabs;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.dataSubscription.unsubscribe();
   }
 
   onAdd() {
@@ -50,7 +64,6 @@ export class MainPageComponent implements OnInit {
         this.tabs.push(tmpAsset);
         this.socketChange();
         this.saveState();
-        console.log('onAdd', this.tabs);
       }
     });
   }
@@ -64,9 +77,8 @@ export class MainPageComponent implements OnInit {
   }
 
   socketChange() {
-    if (this.wsIsOpen) {
+    if (this.wss.wsIsOpen) {
       let ids = this.tabs.map((tab) => tab.asset_id);
-      console.log('change sent', ids);
       this.wss.changeHello(ids);
     }
   }
@@ -75,34 +87,18 @@ export class MainPageComponent implements OnInit {
     this.drawerIsOpen = !this.drawerIsOpen;
     let ids = this.tabs.map((tab) => tab.asset_id);
     if (this.drawerIsOpen) {
-      console.log(ids);
       if (ids.length > 0) {
-        if (!this.wsIsOpen) {
+        if (!this.wss.wsIsOpen) {
           this.wss.OpenWebSocket(ids);
-          this.wsIsOpen = true;
+          this.wss.wsIsOpen = true;
         }
       }
     } else {
-      if (this.wsIsOpen) {
+      if (this.wss.wsIsOpen) {
         this.wss.closeWebSocket();
-        this.wsIsOpen = false;
+        this.wss.wsIsOpen = false;
       }
     }
-  }
-
-  onLogOut() {
-    let tmpUser: User = this.getCurrentUser();
-    let users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
-    users.forEach((user: User) => {
-      if (user.username == tmpUser.username) {
-        user.activeTabs = tmpUser.activeTabs;
-      }
-    });
-
-    localStorage.setItem('loggedInUser', '');
-    localStorage.setItem('users', JSON.stringify(users));
-
-    this.router.navigate(['/login']);
   }
 
   saveState() {
@@ -112,7 +108,7 @@ export class MainPageComponent implements OnInit {
     }
   }
 
-  getCurrentUser(): User {
-    return JSON.parse(localStorage.getItem('loggedInUser') || '');
+  logOutPressed() {
+    this.auth.onLogOut();
   }
 }

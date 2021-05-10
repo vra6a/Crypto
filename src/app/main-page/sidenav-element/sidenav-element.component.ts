@@ -31,7 +31,6 @@ export class SidenavElementComponent implements OnInit, OnDestroy {
     let wsInfo = data as WebsocketInfo;
     if (wsInfo.type != 'error') {
       let symbolArray = wsInfo.symbol_id.split('_');
-      console.log(symbolArray[2], wsInfo.price_high, wsInfo.price_low);
       if (symbolArray[2] == this.tab.asset_id) {
         this.high = wsInfo.price_high;
         this.low = wsInfo.price_low;

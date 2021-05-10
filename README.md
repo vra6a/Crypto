@@ -2,26 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
 
-## Development server
+The application is a simple application to check crypto currency exchange rates. The user first have to register an account with an username and password. (The next login with this username will require the correct password.) In the application the user can open new tabs, with the + on the tab header, check current high's and low's on the left side of the application by pressing the menu button (3 lines). The user can log out of the account, which will save the current tabs and on the next login it will reload them.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To start the application, first run `npm install` for node modules, then `npm start`. It will create a server on `http://localhost:4200/`.
 
-## Code scaffolding
+## Side notes
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Currently the application's websocket part only supports Coinbase, but it can be easily changed.
+- The application only supports USD

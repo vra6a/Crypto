@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  username: string = '';
+  password: string = '';
+
   constructor(
     private auth: AuthService,
     private _snackBar: MatSnackBar,
@@ -16,9 +19,6 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-
-  username: string = '';
-  password: string = '';
 
   onLogin() {
     if (this.auth.logIn(this.username, this.password)) {

@@ -8,12 +8,6 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./chart.component.css'],
 })
 export class ChartComponent implements OnInit, OnDestroy {
-  constructor(private dataService: DataService) {}
-  ngOnDestroy(): void {}
-
-  ngOnInit(): void {
-    this.init();
-  }
   dataLoaded = false;
   data: { name: string; value: number }[] = [];
 
@@ -22,6 +16,13 @@ export class ChartComponent implements OnInit, OnDestroy {
   colorScheme = {
     domain: ['#3F51B5'],
   };
+
+  constructor(private dataService: DataService) {}
+  ngOnDestroy(): void {}
+
+  ngOnInit(): void {
+    this.init();
+  }
 
   init() {
     ///MOCK
@@ -58,6 +59,5 @@ export class ChartComponent implements OnInit, OnDestroy {
 
   getStartDate(endDate: Date): Date {
     return new Date(Date.now() - 7 * 1000 * 60 * 60 * 24);
-    //return date;
   }
 }

@@ -38,7 +38,8 @@ export class DataService {
       this.loadFinished = true;
       this.dataLoaded.next(this.availableCryptos);
     });
-    /*
+    //MOCK
+    /* 
     let allCrypto = this.assetInfo.getAssets().filter(function (asset) {
       return asset.type_is_crypto == 1;
     });

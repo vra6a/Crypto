@@ -6,13 +6,6 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./calculator.component.css'],
 })
 export class CalculatorComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {
-    this.from = this.id;
-    this.output = this.usdPrice;
-  }
-
   @Input() usdPrice: number = 0;
   @Input() id: string = '';
 
@@ -22,6 +15,13 @@ export class CalculatorComponent implements OnInit {
   input: number = 1;
   output: number = this.usdPrice;
   swapped: boolean = false;
+
+  constructor() {}
+
+  ngOnInit(): void {
+    this.from = this.id;
+    this.output = this.usdPrice;
+  }
 
   onSwap() {
     let tmp = this.from;

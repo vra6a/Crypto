@@ -7,10 +7,10 @@ import { Asset } from '../models/asset.model';
   styleUrls: ['./tab.component.css'],
 })
 export class TabComponent implements OnInit {
-  constructor() {}
-
   @Input() tab!: Asset;
   @Output() onDeletePressed = new EventEmitter<Asset>();
+
+  constructor() {}
 
   ngOnInit(): void {}
 
